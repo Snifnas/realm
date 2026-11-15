@@ -613,3 +613,36 @@ body .pixel-hero.avatar-holder{background:#416a61}
     bottom:6px;
   }
 }
+
+
+/* Equipment preview and four stable design finishes for each rarity/slot.
+   Finishes affect pixels only, never the sprite's geometry or coordinates. */
+.pixel-hero.avatar-holder .avatar-character .avatar-wearable[data-variant="0"]{filter:none}
+.pixel-hero.avatar-holder .avatar-character .avatar-wearable[data-variant="1"]{filter:sepia(.12) saturate(1.28) hue-rotate(-9deg) contrast(1.06)}
+.pixel-hero.avatar-holder .avatar-character .avatar-wearable[data-variant="2"]{filter:saturate(1.25) hue-rotate(19deg) brightness(1.08)}
+.pixel-hero.avatar-holder .avatar-character .avatar-wearable[data-variant="3"]{filter:saturate(.83) hue-rotate(-16deg) contrast(1.17) brightness(.95)}
+.gear-preview-layout{display:grid;grid-template-columns:minmax(215px,1.06fr) minmax(200px,.94fr);gap:22px;align-items:stretch;margin:19px 0 25px}
+.gear-preview-layout .pixel-hero.avatar-holder{max-width:none;width:100%;height:390px;min-width:0;flex:none;margin:0;align-self:stretch;border-color:#b58b55}
+.gear-preview-information{background:linear-gradient(155deg,#24261d,#1b1e17);border:1px solid #5d513b;border-radius:4px;padding:19px;min-width:0}
+.gear-preview-information h3{font:600 20px 'Cinzel',Georgia,serif;color:#eee0c1;margin:8px 0}
+.gear-preview-information>p{font-size:12px;color:#b9ad94;line-height:1.7;margin:0 0 17px}
+.gear-preview-equipped{display:grid;gap:4px}
+.gear-preview-line{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 2px;border-bottom:1px solid #5247359e}
+.gear-preview-line>span{font:9px 'DM Mono',monospace;letter-spacing:1.15px;color:#9c947e;flex:none}
+.gear-preview-line>strong{font:600 11px 'DM Sans',sans-serif;color:#9a9688;text-align:right;overflow-wrap:anywhere}
+.gear-preview-line.is-equipped>strong{color:#edd2a0}
+.gear-preview-line .rarity-text-uncommon{color:#b9ddab}
+.gear-preview-line .rarity-text-rare{color:#a6cef0}
+.gear-preview-line .rarity-text-epic{color:#dcb8ef}
+.gear-preview-line .rarity-text-legendary{color:#ffdb91}
+.gear-preview-line .rarity-text-mythic{color:#f49fc7}
+@media(max-width:900px){
+ .gear-preview-layout{grid-template-columns:1fr;gap:13px}
+ .gear-preview-layout .pixel-hero.avatar-holder{height:350px;max-width:none}
+ .gear-preview-information{padding:14px}
+ .gear-preview-equipped{grid-template-columns:1fr 1fr;column-gap:14px}
+ .gear-preview-line{align-items:start;display:block;min-width:0}
+ .gear-preview-line>span{display:block;margin-bottom:4px}
+ .gear-preview-line>strong{text-align:left;font-size:11px;display:block}
+}
+@media(max-width:400px){.gear-preview-layout .pixel-hero.avatar-holder{height:310px}.gear-preview-equipped{grid-template-columns:1fr}}
