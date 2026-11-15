@@ -337,3 +337,26 @@ label{color:#cfc1a3}
  .item-card .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.7)}
  .equipment-slot .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.64)}
 }
+
+/* Reward ceremonies */
+.reward-backdrop{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;background:#080b09c9;backdrop-filter:blur(9px);animation:reward-fade .2s ease-out}
+.reward-modal{position:relative;isolation:isolate;overflow:hidden;width:min(430px,100%);padding:43px 30px 30px;text-align:center;background:radial-gradient(circle at 50% 5%,#51402a,#24241b 52%,#161913);border:2px solid #cba35e;box-shadow:0 0 0 6px #161811,0 22px 90px #000c,0 0 60px #b88a4133;animation:reward-enter .48s cubic-bezier(.2,1.6,.4,1)}
+.reward-modal:before{content:"";position:absolute;inset:8px;border:1px solid #d3b47455;pointer-events:none}
+.reward-emblem{position:relative;z-index:1;margin:0 auto 13px;width:98px;height:98px;display:grid;place-items:center;border:2px solid #f0ce81;background:radial-gradient(circle,#7b6339,#30271c 70%);border-radius:50%;color:#ffe8a4;font:65px Georgia;box-shadow:0 0 36px #edb95b77;animation:reward-glow 1.6s ease-in-out infinite alternate}
+.reward-modal h2{position:relative;z-index:1;margin:13px 0 17px;font:600 clamp(23px,5vw,33px) 'Cinzel',Georgia,serif;color:#fff2ce;line-height:1.25}
+.reward-xp{font:700 27px 'Silkscreen',monospace;color:#f7d68a;text-shadow:0 2px 8px #e7ac4555}
+.reward-level{font:700 32px 'Silkscreen',monospace;color:#f8d47d}
+.reward-loot{font:600 17px 'Cinzel',Georgia,serif;color:#e9d7b4}
+.reward-loot small{display:block;margin-top:8px;font:10px 'DM Mono',monospace;letter-spacing:2px;color:#e7b970}
+.reward-actions{position:relative;z-index:2;display:grid;justify-items:center;gap:15px;margin-top:25px}
+.reward-actions .primary{width:100%;max-width:300px}
+.reward-sound{background:transparent;border:0;color:#c9ba96;font:11px 'DM Mono',monospace;letter-spacing:1px;padding:9px}
+.reward-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.reward-particles i{position:absolute;top:-15px;width:7px;height:12px;opacity:0;animation:reward-fall 2.2s linear infinite}
+.reward-level .reward-emblem{border-color:#f8d47d}
+.reward-loot .reward-emblem{border-color:#d0a7f4}
+@keyframes reward-enter{from{opacity:0;transform:scale(.76) translateY(40px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes reward-fade{from{opacity:0}to{opacity:1}}
+@keyframes reward-glow{from{filter:brightness(.9);transform:scale(.98)}to{filter:brightness(1.2);transform:scale(1.05)}}
+@keyframes reward-fall{0%{opacity:0;transform:translateY(-10px) rotate(0deg)}12%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateY(470px) rotate(550deg)}}
+@media(prefers-reduced-motion:reduce){.reward-backdrop,.reward-modal,.reward-emblem,.reward-particles i{animation:none!important}.reward-particles{display:none}}
