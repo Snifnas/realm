@@ -646,3 +646,8 @@ body .pixel-hero.avatar-holder{background:#416a61}
  .gear-preview-line>strong{text-align:left;font-size:11px;display:block}
 }
 @media(max-width:400px){.gear-preview-layout .pixel-hero.avatar-holder{height:310px}.gear-preview-equipped{grid-template-columns:1fr}}
+
+/* Recovery link remains usable if authentication or hydration fails. */
+.realm-loading-recovery{display:block;width:max-content;max-width:88vw;margin:25px auto 0;padding:12px 17px;border:1px solid #b58e50;background:#2c291e;color:#f1d392;font:600 12px 'DM Sans',sans-serif;text-decoration:none;opacity:0;animation:realm-reveal-recovery .01s steps(1,end) 8s forwards}
+@keyframes realm-reveal-recovery{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.realm-loading-recovery{animation:realm-reveal-recovery .01s steps(1,end) 8s forwards}}
