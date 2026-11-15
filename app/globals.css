@@ -61,3 +61,6 @@
   .authbox{padding:34px 8% calc(40px + env(safe-area-inset-bottom))}
 }
 @media(min-width:761px){.mobile-nav{display:none}}
+
+.mobile-brand{display:none}
+@media(max-width:760px){.mobile-brand{display:inline-flex;align-items:center}.mobile-brand .realm-mark{width:28px;height:28px}.breadcrumb{font-size:9px}.main header{gap:10px}.main header b{white-space:nowrap}}
