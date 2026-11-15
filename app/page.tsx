@@ -35,7 +35,56 @@ export default function Home(){
  const [backgrounds,setBackgrounds]=useState<BackgroundScene[]>([]),[unlockedBackgroundIds,setUnlockedBackgroundIds]=useState<string[]>([]),[selectedBackgroundId,setSelectedBackgroundId]=useState("starter-village");
  const [rewardEvent,setRewardEvent]=useState<RewardEvent|null>(null),[rewardQueue,setRewardQueue]=useState<RewardEvent[]>([]);
  function closeReward(){setRewardQueue(queue=>{const [next,...rest]=queue;setRewardEvent(next||null);return rest;});}
- useEffect(()=>{ if(!db){setLoading(false);return;} db.auth.getSession().then(({data})=>{setSession(data.session);setLoading(false);}); const {data:{subscription}}=db.auth.onAuthStateChange((_e,s)=>setSession(s)); return ()=>subscription.unsubscribe();},[]);
+ useEffect(()=>{
+  if(!db){
+   setNotice("REALM cannot connect to its authentication service. Try reopening the app.");
+   setLoading(false);
+   return;
+  }
+  let mounted=true;
+  let completed=false;
+  // iOS/Safari can leave a session refresh waiting on a browser storage lock.
+  // Never leave the app permanently stuck on the server-rendered loading screen.
+  const recover=window.setTimeout(()=>{
+   if(!mounted||completed)return;
+   setNotice("Session restoration took too long. You can log in again below.");
+   setLoading(false);
+  },9000);
+  const finish=(nextSession:any,errorMessage?:string)=>{
+   if(!mounted)return;
+   completed=true;
+   window.clearTimeout(recover);
+   setSession(nextSession);
+   setLoading(false);
+   if(errorMessage)setNotice(errorMessage);
+  };
+  let subscription:{unsubscribe:()=>void}|undefined;
+  try{
+   const result=db.auth.onAuthStateChange((event,nextSession)=>{
+    if(!mounted)return;
+    if(event==="INITIAL_SESSION"||event==="SIGNED_IN"||event==="TOKEN_REFRESHED"||event==="SIGNED_OUT"){
+     finish(nextSession);
+    }else{
+     setSession(nextSession);
+    }
+   });
+   subscription=result.data.subscription;
+   void db.auth.getSession().then(({data,error})=>{
+    if(!mounted)return;
+    if(error)finish(null,"Your saved login could not be restored. Please log in again.");
+    else finish(data.session);
+   }).catch(()=>{
+    finish(null,"Could not restore your session. Please log in again.");
+   });
+  }catch{
+   finish(null,"REALM encountered an authentication error. Please log in again.");
+  }
+  return ()=>{
+   mounted=false;
+   window.clearTimeout(recover);
+   subscription?.unsubscribe();
+  };
+ },[]);
  useEffect(()=>{if(session?.user){loadSkills();loadQuests();loadInventory();loadBackgrounds();}},[session?.user?.id]);
  async function loadSkills(){
   if(!db||!session?.user)return; const uid=session.user.id;
