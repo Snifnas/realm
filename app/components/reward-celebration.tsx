@@ -16,8 +16,8 @@ function play(kind:RewardEvent["kind"],muted:boolean){
  }catch{/* Sound is optional if browser audio is blocked. */}
 }
 export default function RewardCelebration({event,onClose}:{event:RewardEvent|null;onClose:()=>void}){
- const [muted,setMuted]=useState(true);
- useEffect(()=>{try{setMuted(window.localStorage.getItem("realm-muted")!=="false");}catch{}},[]);
+ const [muted,setMuted]=useState(false);
+ useEffect(()=>{try{setMuted(window.localStorage.getItem("realm-muted")==="true");}catch{}},[]);
  useEffect(()=>{if(!event)return;play(event.kind,muted);},[event?.id]);
  if(!event)return null;
  return <div className="reward-backdrop" role="presentation" onClick={onClose}><section className={`reward-modal reward-${event.kind}`} role="dialog" aria-modal="true" aria-label={event.title} onClick={e=>e.stopPropagation()}>
