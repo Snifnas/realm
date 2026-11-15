@@ -25,7 +25,7 @@ const ink="#282833";
 
 /** A paper-doll: the illustrated boxer-shorts character is always the base.
  * Equipment overlays are selected from the player's actually equipped inventory. */
-export default function CharacterAvatar({equipment=[]}:{equipment?:CharacterGear[]}) {
+export default function CharacterAvatar({equipment=[],backgroundPath="/backgrounds/bg-starter-village.webp"}:{equipment?:CharacterGear[];backgroundPath?:string}) {
   const gear:Record<string,CharacterGear>={};
   equipment.forEach(item=>{if(item?.slot&&item?.name)gear[item.slot]=item;});
   const {helmet,chest,legs,boots,gloves,cloak,shield,weapon,accessory}=gear;
@@ -38,7 +38,7 @@ export default function CharacterAvatar({equipment=[]}:{equipment?:CharacterGear
     matches(weapon,/spear|pike|lance/)? "spear":matches(weapon,/hammer|maul/)? "hammer":"sword";
   const outline={stroke:ink,strokeWidth:1.6,strokeLinejoin:"round" as const};
   return <div className="avatar-stage" role="img" aria-label={description}>
-    <div className="avatar-village" aria-hidden="true"/>
+    <div className="avatar-village" aria-hidden="true" style={{backgroundImage:`url("${backgroundPath}")`}}/>
     <div className="avatar-vignette" aria-hidden="true"/>
     <div className="avatar-character">
       {cloak && <svg viewBox="0 0 192 288" className="avatar-gear-svg avatar-gear-behind" shapeRendering="crispEdges" aria-hidden="true">
@@ -50,7 +50,7 @@ export default function CharacterAvatar({equipment=[]}:{equipment?:CharacterGear
           {ornate(cloak)&& <path d="m64 207 11 8 22-11 31 14 15-12" stroke={K.trim} strokeWidth="3" fill="none"/>}
         </g>
       </svg>}
-      <img src="/character-boxers.webp" className="avatar-art" alt="" draggable={false}/>
+      <img src="/character-boxers-hd.webp" className="avatar-art" alt="" draggable={false}/>
       <svg viewBox="0 0 192 288" className="avatar-gear-svg avatar-gear-front" shapeRendering="crispEdges" aria-hidden="true">
         {legs && <g {...outline}>
           <path d="M73 120h53l13 29-12 44-2 40h-19l-4-48-11-11-8 55H67l2-57-6-21Z" fill={L.shadow}/>
