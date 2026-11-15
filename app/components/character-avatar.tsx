@@ -6,6 +6,7 @@ export type CharacterGear = {
   rarity: string;
   design_key?: string;
   item_key?: string;
+  sprite_variant?: number;
 };
 
 type WearableSlot =
@@ -27,6 +28,8 @@ const WEARABLE_ORDER: readonly WearableSlot[] = [
 function Wearable({ slot, item }: { slot: WearableSlot; item: CharacterGear }) {
   const rarity = item.rarity?.toLowerCase() || "common";
   const index = Math.max(0, RARITIES.indexOf(rarity as typeof RARITIES[number]));
+  // Reuse the item catalogue's four stable variants without changing wearable bounds.
+  const styleVariant = Math.max(0, Math.min(3, Math.floor(item.sprite_variant ?? 0)));
   return (
     <span
       key={slot}
@@ -34,6 +37,7 @@ function Wearable({ slot, item }: { slot: WearableSlot; item: CharacterGear }) {
       data-slot={slot}
       data-rarity={rarity}
       data-design={item.design_key || item.item_key || ""}
+      data-variant={styleVariant}
       aria-hidden="true"
       style={{
         backgroundImage: 'url("/wearables/wearable-' + slot + '.webp")',
