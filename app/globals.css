@@ -64,3 +64,12 @@
 
 .mobile-brand{display:none}
 @media(max-width:760px){.mobile-brand{display:inline-flex;align-items:center}.mobile-brand .realm-mark{width:28px;height:28px}.breadcrumb{font-size:9px}.main header{gap:10px}.main header b{white-space:nowrap}}
+
+
+/* Current quest focus */
+.focus-banner{display:flex;flex-direction:column;gap:8px;margin:22px 0 18px;padding:17px 20px;background:linear-gradient(110deg,#30291c,#202118);border:1px solid #b18a4c;box-shadow:inset 3px 0 0 #d7b36d}
+.focus-banner strong{font:22px Georgia;color:#f0dfb7}
+.focus-banner span{font:10px 'DM Mono';letter-spacing:1px;color:#c3a36a}
+.quest-card.focused{border:1px solid #b18a4c;box-shadow:0 0 0 1px #b18a4c33,0 12px 30px #0003;background:linear-gradient(110deg,#2b281e,#1d2018)}
+.quest-card.focused .quest-top:before{content:'CURRENT QUEST';display:block;position:absolute;opacity:0;pointer-events:none}
+@media(max-width:760px){.focus-banner{padding:15px 16px;margin:18px 0}.focus-banner strong{font-size:19px}}
