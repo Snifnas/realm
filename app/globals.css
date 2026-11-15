@@ -386,3 +386,111 @@ label{color:#cfc1a3}
 }
 @media(max-width:370px){.pixel-hero.avatar-holder{height:270px;flex-basis:270px}}
 @media(prefers-reduced-motion:reduce){.avatar-figure{animation:none}}
+
+
+/* Avatar v2: full-bleed original scenery, full-height illustrated body and precise gear layers.
+   Strong selectors deliberately override the legacy .pixel-hero svg mobile rule. */
+.pixel-hero.avatar-holder{
+  position:relative;
+  display:block;
+  padding:0;
+  width:100%;
+  min-width:0;
+  max-width:500px;
+  height:330px;
+  flex:1 1 250px;
+  overflow:hidden;
+  background:#406d64;
+  border:2px solid #b89058;
+  border-radius:6px;
+  box-shadow:inset 0 0 0 4px #121c17,0 15px 28px #0007;
+}
+.pixel-hero.avatar-holder .avatar-stage{position:relative;inset:auto;display:block;width:100%;height:100%;overflow:hidden;isolation:isolate}
+.pixel-hero.avatar-holder .avatar-village{
+  position:absolute;
+  inset:0;
+  background:#548377 url('/realm-village.webp') center 44% / cover no-repeat;
+  transform:scale(1.025);
+}
+.pixel-hero.avatar-holder .avatar-vignette{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#09271918 4%,#12291608 47%,#102b1a76 100%),linear-gradient(90deg,#142f291f,transparent 25%,transparent 78%,#102a201c);
+  pointer-events:none;
+}
+.pixel-hero.avatar-holder .avatar-character{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  height:calc(100% - 16px);
+  width:auto;
+  aspect-ratio:2/3;
+  transform:translateX(-50%);
+  filter:drop-shadow(0 8px 6px #0c1912c9);
+  transform-origin:center bottom;
+}
+.pixel-hero.avatar-holder .avatar-character img.avatar-art{
+  display:block;
+  position:relative;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:pixelated;
+  filter:none;
+  border:0;
+  background:transparent;
+  max-width:none;
+}
+.pixel-hero.avatar-holder .avatar-character svg.avatar-gear-svg{
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  overflow:visible;
+  image-rendering:pixelated;
+  filter:none;
+  pointer-events:none;
+}
+.pixel-hero.avatar-holder .avatar-gear-behind{z-index:0}
+.pixel-hero.avatar-holder .avatar-art{z-index:1}
+.pixel-hero.avatar-holder .avatar-gear-front{z-index:2}
+.pixel-hero.avatar-holder .avatar-status{
+  z-index:5;
+  left:12px;
+  bottom:12px;
+  padding:8px 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#f6e5bf;
+  font:9px 'DM Mono',monospace;
+  letter-spacing:1.2px;
+  border:1px solid #c9a56e;
+  background:#19251bdc;
+  max-width:calc(100% - 24px);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.hero .pixel-hero.avatar-holder{align-self:stretch}
+@media(max-width:1100px) and (min-width:761px){
+ .hero .pixel-hero.avatar-holder{height:290px;flex:1 1 240px}
+}
+@media(max-width:760px){
+ .hero .pixel-hero.avatar-holder{
+  height:350px;
+  flex:0 0 350px;
+  max-width:none;
+  width:100%;
+  margin:0;
+ }
+ .pixel-hero.avatar-holder .avatar-village{background-position:51% 48%}
+ .pixel-hero.avatar-holder .avatar-character{height:calc(100% - 13px);bottom:6px}
+ .pixel-hero.avatar-holder .avatar-status{font-size:9px}
+}
+@media(max-width:375px){
+ .hero .pixel-hero.avatar-holder{height:305px;flex-basis:305px}
+}
