@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";\n"use client";
+"use client";
+import { useEffect, useState } from "react";
 
 type PixelEquipmentProps = {
   item: { name:string; slot:string; rarity:string; design_key?:string; item_key?:string; sprite_variant?:number };
@@ -15,7 +16,9 @@ const palettes: Record<string,{metal:string;bright:string;dark:string;gem:string
 };
 
 export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
- const rarity=(item.rarity||"common").toLowerCase();\n const [atlasAvailable,setAtlasAvailable]=useState(false);\n useEffect(()=>{const img=new Image();img.onload=()=>setAtlasAvailable(true);img.onerror=()=>setAtlasAvailable(false);img.src="/equipment-atlas.webp";},[]);
+ const rarity=(item.rarity||"common").toLowerCase();
+ const [atlasAvailable,setAtlasAvailable]=useState(false);
+ useEffect(()=>{const img=new Image();img.onload=()=>setAtlasAvailable(true);img.onerror=()=>setAtlasAvailable(false);img.src="/equipment-atlas.webp";},[]);
  const c=palettes[rarity]||palettes.common;
  const kind=(item.design_key||item.item_key||"").toLowerCase();
  const variant=[...kind].reduce((n,ch)=>n+ch.charCodeAt(0),0)%3;
