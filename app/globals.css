@@ -115,3 +115,69 @@
  .focus-button,.compact-action{min-height:38px;padding:8px;font-size:8px}
  .quest-list-heading{align-items:flex-start;flex-direction:column}
 }
+
+/* REALM overworld art and equipment */
+.pixel-hero{width:260px;height:190px;flex:0 1 260px;overflow:hidden;padding:0;border:1px solid #6f7048;border-radius:3px;background:#253b31;box-shadow:0 10px 28px #0005}
+.pixel-hero img{display:block;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+.stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.loot-results{margin:22px 0;padding:18px;background:#202319;border:1px solid #6b5937}
+.loot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px}
+.loot-item{display:flex;align-items:center;gap:12px;padding:12px;background:#171a14;border:1px solid var(--line)}
+.loot-item>div{display:grid;gap:4px;min-width:0}
+.loot-item small,.item-card-top small{font:9px 'DM Mono';letter-spacing:1px}
+.loot-item b{font:15px Georgia;color:#eee3ca}
+.loot-item>div>span{font:9px 'DM Mono';color:#99927d}
+.item-icon{display:grid;place-items:center;width:42px;height:42px;flex:none;background:#27291f;border:1px solid #4b4a39;font-size:27px}
+.loot-toast{display:grid;gap:10px;padding:14px 16px;margin:15px 0;background:#24281c;border:1px solid #6b5937}
+.loot-toast>b{font:10px 'DM Mono';letter-spacing:1.5px;color:var(--gold)}
+.loot-toast>div{display:flex;flex-wrap:wrap;gap:8px}
+.loot-toast>div>span{font:11px 'DM Mono';padding:7px 9px;background:#171a14;border:1px solid #454331}
+.loot-toast .textbutton{justify-self:start;padding:0}
+.loadout-panel{margin-top:22px}
+.equipment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.equipment-slot{min-height:152px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:12px;background:#171a14;border:1px solid #424334}
+.equipment-slot>small{font:9px 'DM Mono';letter-spacing:1px;color:#aaa18a}
+.equipment-slot>b{font:14px Georgia;color:#eee3ca;line-height:1.25}
+.equipment-slot>em{font:8px 'DM Mono';font-style:normal;letter-spacing:1px}
+.empty-slot{border-style:dashed;border-color:#444638;color:#817d6a}
+.empty-slot>b{color:#817d6a;font-weight:400}
+.empty-slot-icon{font:29px Georgia;color:#696956}
+.gear-action{margin-top:7px;padding:9px 10px;font-size:9px;min-height:34px;width:100%}
+.equipment-slot .gear-action{width:auto;min-height:30px;margin-top:2px}
+.gear-bonuses{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.gear-bonuses span{font:9px 'DM Mono';color:#9d967f;padding:8px 10px;background:#171912;border:1px solid #37382b}
+.gear-bonuses b{color:var(--gold);margin-left:5px}
+.inventory-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 12px}
+.inventory-heading h2{font:23px Georgia;margin:0}
+.inventory-heading>span{font:9px 'DM Mono';color:var(--gold);letter-spacing:1px}
+.inventory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.item-card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:15px;background:#1b1d16;border:1px solid #424334}
+.item-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.item-card>b{font:17px Georgia;color:#eee3ca;line-height:1.25}
+.item-slot{font:9px 'DM Mono';color:#aaa18a;text-transform:uppercase}
+.item-card>p{font-size:11px;line-height:1.5;color:#aaa38f;margin:0;min-height:34px}
+.item-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:9px 0;border-top:1px solid #36372b;border-bottom:1px solid #36372b}
+.item-stats span{font:9px 'DM Mono';color:#b4ad98}
+.rarity-common{border-color:#767a73!important}.rarity-common .item-card-top small,.rarity-common em,.rarity-text-common{color:#c1c2b9!important}
+.rarity-uncommon{border-color:#6f9a5d!important}.rarity-uncommon .item-card-top small,.rarity-uncommon em,.rarity-text-uncommon{color:#a7d58f!important}
+.rarity-rare{border-color:#4c82b7!important}.rarity-rare .item-card-top small,.rarity-rare em,.rarity-text-rare{color:#8bc4f3!important}
+.rarity-epic{border-color:#8960b3!important}.rarity-epic .item-card-top small,.rarity-epic em,.rarity-text-epic{color:#d4a1f7!important}
+.rarity-legendary{border-color:#b38a3d!important}.rarity-legendary .item-card-top small,.rarity-legendary em,.rarity-text-legendary{color:#f0cc76!important}
+.rarity-mythic{border-color:#b34e83!important}.rarity-mythic .item-card-top small,.rarity-mythic em,.rarity-text-mythic{color:#ff9ac5!important}
+.rarity-text-common{color:#c1c2b9}.rarity-text-uncommon{color:#a7d58f}.rarity-text-rare{color:#8bc4f3}.rarity-text-epic{color:#d4a1f7}.rarity-text-legendary{color:#f0cc76}.rarity-text-mythic{color:#ff9ac5}
+@media(max-width:760px){
+ .pixel-hero{width:100%;height:155px;flex:0 0 155px}
+ .pixel-hero img{object-position:center 56%}
+ .equipment-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .equipment-slot{padding:8px;min-height:135px}
+ .equipment-slot>b{font-size:12px}
+ .inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .item-card{padding:11px}
+ .item-card>b{font-size:14px}
+ .item-card>p{font-size:10px}
+ .loot-grid{grid-template-columns:1fr}
+ .inventory-heading{align-items:flex-start}
+ .gear-bonuses{gap:5px}
+ .gear-bonuses span{font-size:8px;padding:7px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
