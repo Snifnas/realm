@@ -73,3 +73,45 @@
 .quest-card.focused{border:1px solid #b18a4c;box-shadow:0 0 0 1px #b18a4c33,0 12px 30px #0003;background:linear-gradient(110deg,#2b281e,#1d2018)}
 .quest-card.focused .quest-top:before{content:'CURRENT QUEST';display:block;position:absolute;opacity:0;pointer-events:none}
 @media(max-width:760px){.focus-banner{padding:15px 16px;margin:18px 0}.focus-banner strong{font-size:19px}}
+
+
+/* One quest in focus; the rest stay in a compact selector */
+.quest-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.quest-list-heading h2{font:18px Georgia;margin:0;color:#e8d9b8}
+.quest-list-heading small,.quest-compact small{font:9px 'DM Mono';letter-spacing:1px;color:#a99a78}
+.quest-compact{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;margin:8px 0;background:#1a1c16;border:1px solid #343529}
+.quest-compact>div{display:grid;gap:5px;min-width:0}
+.quest-compact>div>b{font:16px Georgia;color:#e6ddc9}
+.quest-compact>div>span{font-size:11px;color:#938b78}
+.quest-compact.locked{opacity:.65}
+.quest-compact.completed{opacity:.6}
+.focus-button,.compact-action{margin:0;min-height:38px;padding:9px 12px;white-space:nowrap;font-size:9px}
+.focus-button{border-color:#74603e;color:var(--gold)}
+.compact-status{font:9px 'DM Mono';color:#a9bd8b;white-space:nowrap}
+.pixel-hero{width:170px;height:180px;flex:none;display:grid;place-items:center;padding:8px;background:radial-gradient(ellipse at 50% 65%,#b18a4c33,transparent 70%);border-bottom:1px solid #78603c}
+.pixel-hero svg{image-rendering:pixelated;filter:drop-shadow(0 8px 0 #0005)}
+.tree-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.tree-heading b{font:17px Georgia;color:#e9dfca}
+.tree-heading span{font:9px 'DM Mono';color:var(--gold);white-space:nowrap}
+.skill-tree{padding:15px 0 20px;border-bottom:1px solid #333428}
+.skill-tree:last-child{border-bottom:0}
+.tree-roots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;padding-top:16px}
+.tree-root{min-width:0;position:relative}
+.tree-node{position:relative;padding:14px;background:#202219;border:1px solid #55503b;min-height:112px}
+.tree-node small{display:block;font:8px 'DM Mono';letter-spacing:1px;color:var(--gold);margin-bottom:8px}
+.tree-node b{display:block;font:15px Georgia;color:#e8dfcc;line-height:1.35}
+.tree-node p{font-size:11px;color:#a59e8b;line-height:1.55;margin:7px 0 0}
+.tree-children{display:grid;gap:9px;margin:13px 0 0 15px;padding-left:14px;border-left:2px solid #71603e}
+.tree-children .tree-node{min-height:0;background:#191b15;border-color:#3e4030}
+.tree-leaf{margin-top:10px;padding-top:8px;border-top:1px solid #3c3a2d;color:#c5a66c;font:10px 'DM Mono';line-height:1.5}
+@media(max-width:760px){
+ .pixel-hero{width:100%;height:125px;border:0;border-bottom:1px solid #78603c}
+ .pixel-hero svg{width:115px;height:130px}
+ .hero{align-items:center}
+ .tree-heading{align-items:flex-start;flex-direction:column;gap:6px}
+ .tree-roots{grid-template-columns:1fr}
+ .quest-compact{align-items:flex-start;padding:12px;gap:8px}
+ .quest-compact>div>b{font-size:14px}
+ .focus-button,.compact-action{min-height:38px;padding:8px;font-size:8px}
+ .quest-list-heading{align-items:flex-start;flex-direction:column}
+}
