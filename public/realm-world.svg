@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" shape-rendering="crispEdges">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#77b8ed"/><stop offset="1" stop-color="#c8e8e3"/></linearGradient>
+ <linearGradient id="grass" x2="0" y2="1"><stop stop-color="#84b94c"/><stop offset="1" stop-color="#487b35"/></linearGradient>
+</defs>
+<rect width="640" height="360" fill="url(#sky)"/>
+<rect x="468" y="34" width="48" height="16" fill="#fff2bc"/><rect x="452" y="50" width="80" height="16" fill="#fff2bc"/><rect x="468" y="66" width="48" height="12" fill="#fff2bc"/>
+<rect x="76" y="42" width="56" height="12" fill="#eef7ed"/><rect x="60" y="54" width="88" height="14" fill="#eef7ed"/><rect x="92" y="68" width="44" height="10" fill="#eef7ed"/>
+<rect x="258" y="22" width="40" height="12" fill="#f8fbef"/><rect x="242" y="34" width="72" height="14" fill="#f8fbef"/><rect x="270" y="48" width="44" height="10" fill="#f8fbef"/>
+<rect x="522" y="112" width="118" height="112" fill="#729fc3"/><path d="M486 194 556 86 602 140 640 106 640 236Z" fill="#7197af"/><path d="M0 222 103 105 167 169 244 94 345 222Z" fill="#739bb4"/><path d="m78 138 25-33 23 29-15-5-9 10Z" fill="#e2eee2"/><path d="m211 133 33-39 33 43-22-9-13 10Z" fill="#e5eee4"/>
+<path d="M0 224 122 169 223 212 340 157 465 213 568 170 640 210 640 360 0 360Z" fill="#5d9360"/>
+<path d="M0 256 112 206 216 248 340 194 450 246 566 205 640 244 640 360 0 360Z" fill="#4d8043"/>
+<!-- distant village -->
+<rect x="390" y="180" width="35" height="36" fill="#9c7953"/><path d="M382 184 407 160 432 184Z" fill="#854d38"/><rect x="402" y="194" width="10" height="22" fill="#493c31"/>
+<rect x="438" y="192" width="29" height="29" fill="#d0b078"/><path d="m432 194 21-22 22 22Z" fill="#79503d"/>
+<!-- cottage -->
+<rect x="470" y="156" width="132" height="100" fill="#dbb77a"/><rect x="485" y="172" width="100" height="82" fill="#c99a60"/>
+<path d="M455 165 520 105 613 165Z" fill="#a6533d"/><path d="M474 162 520 122 594 162Z" fill="#c4774b"/><rect x="511" y="126" width="20" height="10" fill="#e39a5d"/>
+<rect x="489" y="184" width="27" height="31" fill="#6d9caa"/><rect x="493" y="188" width="19" height="23" fill="#b6e4d5"/><rect x="501" y="184" width="4" height="31" fill="#8d6c48"/><rect x="489" y="197" width="27" height="4" fill="#8d6c48"/>
+<rect x="548" y="184" width="27" height="31" fill="#6d9caa"/><rect x="552" y="188" width="19" height="23" fill="#b6e4d5"/><rect x="560" y="184" width="4" height="31" fill="#8d6c48"/><rect x="548" y="197" width="27" height="4" fill="#8d6c48"/>
+<rect x="526" y="212" width="29" height="44" fill="#684630"/><rect x="531" y="218" width="19" height="32" fill="#98623f"/><rect x="547" y="232" width="4" height="4" fill="#e4c47a"/>
+<rect x="583" y="116" width="17" height="37" fill="#8b8170"/><rect x="580" y="110" width="23" height="8" fill="#b6a28a"/><rect x="586" y="94" width="10" height="16" fill="#d5e6d6"/>
+<!-- layered trees -->
+<rect x="22" y="160" width="18" height="106" fill="#725036"/><rect x="30" y="132" width="9" height="52" fill="#805638"/>
+<rect x="0" y="110" width="72" height="35" fill="#356e3e"/><rect x="12" y="88" width="62" height="40" fill="#438a47"/><rect x="2" y="132" width="85" height="34" fill="#4f9b4a"/><rect x="20" y="78" width="40" height="22" fill="#75b64e"/><rect x="8" y="101" width="16" height="12" fill="#9acb5a"/><rect x="58" y="116" width="17" height="13" fill="#6ba94a"/>
+<rect x="90" y="192" width="12" height="64" fill="#76513a"/><rect x="74" y="160" width="54" height="35" fill="#397641"/><rect x="84" y="142" width="42" height="30" fill="#4f9141"/>
+<rect x="620" y="198" width="14" height="61" fill="#79513a"/><rect x="591" y="156" width="52" height="56" fill="#34733f"/><rect x="600" y="137" width="44" height="35" fill="#4e9245"/>
+<!-- ground and path -->
+<path d="M0 254 100 241 205 252 305 235 410 248 520 235 640 252V360H0Z" fill="url(#grass)"/>
+<path d="M206 360 280 282 368 275 450 360Z" fill="#b99662"/><path d="m246 360 58-67 56-8 66 75Z" fill="#c9a76f"/><rect x="285" y="303" width="44" height="7" fill="#d9bd86"/><rect x="354" y="320" width="55" height="7" fill="#d9bd86"/>
+<!-- fences -->
+<rect x="92" y="263" width="132" height="7" fill="#8a603c"/><rect x="92" y="286" width="132" height="7" fill="#8a603c"/><rect x="101" y="253" width="9" height="47" fill="#a87a4b"/><rect x="143" y="253" width="9" height="47" fill="#a87a4b"/><rect x="185" y="253" width="9" height="47" fill="#a87a4b"/>
+<rect x="446" y="266" width="116" height="7" fill="#8a603c"/><rect x="446" y="287" width="116" height="7" fill="#8a603c"/><rect x="455" y="256" width="9" height="45" fill="#a87a4b"/><rect x="496" y="256" width="9" height="45" fill="#a87a4b"/><rect x="537" y="256" width="9" height="45" fill="#a87a4b"/>
+<!-- flower beds -->
+<rect x="20" y="304" width="11" height="11" fill="#e9d67b"/><rect x="30" y="296" width="10" height="10" fill="#e58b9b"/><rect x="40" y="310" width="10" height="10" fill="#d9d3f1"/><rect x="54" y="300" width="8" height="8" fill="#e9d67b"/>
+<rect x="585" y="304" width="10" height="10" fill="#f0d17d"/><rect x="600" y="296" width="10" height="10" fill="#e58b9b"/><rect x="613" y="311" width="11" height="11" fill="#dcd6f1"/>
+<rect x="116" y="322" width="8" height="8" fill="#f5d982"/><rect x="134" y="315" width="10" height="10" fill="#d68ab0"/><rect x="152" y="326" width="9" height="9" fill="#f2d67c"/>
+<rect x="466" y="319" width="8" height="8" fill="#e5a1bc"/><rect x="482" y="327" width="10" height="10" fill="#f1d979"/>
+<!-- adventurer sprite -->
+<rect x="255" y="188" width="42" height="13" fill="#5e3928"/><rect x="248" y="199" width="56" height="37" fill="#bd8050"/><rect x="255" y="204" width="42" height="26" fill="#efbb83"/><rect x="258" y="213" width="8" height="7" fill="#453126"/><rect x="285" y="213" width="8" height="7" fill="#453126"/><rect x="268" y="225" width="14" height="4" fill="#96563f"/>
+<rect x="249" y="191" width="10" height="13" fill="#593823"/><rect x="292" y="190" width="10" height="14" fill="#593823"/><rect x="254" y="181" width="42" height="10" fill="#75432b"/><rect x="263" y="174" width="25" height="9" fill="#8c5633"/><rect x="250" y="186" width="8" height="8" fill="#8c5633"/><rect x="292" y="184" width="8" height="9" fill="#8c5633"/>
+<path d="M248 233 306 231 325 276 305 297 254 290 236 266Z" fill="#315b49"/><rect x="260" y="236" width="39" height="44" fill="#4b7c52"/><rect x="273" y="237" width="14" height="45" fill="#d3a04e"/><rect x="248" y="246" width="12" height="32" fill="#315b49"/><rect x="298" y="246" width="13" height="31" fill="#315b49"/>
+<rect x="255" y="281" width="20" height="34" fill="#60422e"/><rect x="285" y="281" width="20" height="34" fill="#60422e"/><rect x="249" y="309" width="29" height="10" fill="#49342a"/><rect x="281" y="309" width="30" height="10" fill="#49342a"/><rect x="252" y="290" width="9" height="13" fill="#8a6040"/><rect x="292" y="290" width="9" height="13" fill="#8a6040"/>
+<!-- arms, belt and sword -->
+<rect x="237" y="245" width="13" height="29" fill="#d69a68"/><rect x="308" y="245" width="13" height="29" fill="#d69a68"/><rect x="239" y="265" width="12" height="13" fill="#b57950"/><rect x="307" y="265" width="13" height="13" fill="#b57950"/>
+<rect x="258" y="266" width="44" height="7" fill="#8f5c32"/><rect x="275" y="263" width="11" height="12" fill="#e2bd71"/>
+<path d="M320 244 324 244 348 289 342 292Z" fill="#dce5e2"/><rect x="318" y="238" width="8" height="18" fill="#765134"/><rect x="311" y="249" width="20" height="6" fill="#b48a4b"/>
+<!-- lantern, stones, little mushrooms -->
+<rect x="164" y="212" width="5" height="51" fill="#725136"/><rect x="151" y="207" width="31" height="6" fill="#8c633d"/><rect x="158" y="217" width="17" height="22" fill="#e0b85e"/><rect x="162" y="221" width="9" height="13" fill="#fff0a4"/>
+<rect x="356" y="338" width="31" height="9" fill="#8a8b78"/><rect x="365" y="331" width="21" height="8" fill="#aaa78a"/><rect x="419" y="344" width="19" height="8" fill="#777d70"/>
+<rect x="185" y="333" width="8" height="10" fill="#a64e43"/><rect x="180" y="328" width="18" height="7" fill="#df7762"/><rect x="178" y="337" width="20" height="4" fill="#e5d6ad"/>
+<rect x="570" y="278" width="9" height="7" fill="#e7cb71"/><rect x="580" y="273" width="8" height="8" fill="#f0e39b"/><rect x="62" y="278" width="9" height="7" fill="#e7cb71"/>
+</svg>
