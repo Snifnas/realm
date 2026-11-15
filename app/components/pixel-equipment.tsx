@@ -18,6 +18,7 @@ export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
  const rarity=(item.rarity||"common").toLowerCase();
  const c=palettes[rarity]||palettes.common;
  const kind=(item.design_key||item.item_key||"").toLowerCase();
+ const variant=[...kind].reduce((n,ch)=>n+ch.charCodeAt(0),0)%3;
  const ink="#26251f";
  const details=(()=>{
   if(item.slot==="weapon"){
@@ -55,6 +56,9 @@ export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
   <svg viewBox="0 0 64 64" shapeRendering="crispEdges" aria-hidden="true">
    <path d="M32 3 35 9 42 7 44 14 52 16 49 23 58 29 53 35 57 43 49 47 48 55 39 53 32 61 25 53 16 55 15 47 7 43 11 35 6 29 15 23 12 16 20 14 22 7 29 9Z" fill={c.glow} opacity={rarity==="common"?.08:.16}/>
    {details}
+   {variant===0&&<g fill={c.bright}><rect x="7" y="9" width="4" height="4"/><rect x="53" y="49" width="4" height="4"/><rect x="48" y="5" width="2" height="2"/></g>}
+   {variant===1&&<g fill={c.gem}><rect x="8" y="48" width="3" height="6"/><rect x="53" y="9" width="3" height="6"/><rect x="48" y="55" width="3" height="3"/></g>}
+   {variant===2&&<g fill={c.bright}><path d="M7 23 10 18 13 23 10 28Z"/><path d="M51 40 54 35 57 40 54 45Z"/><rect x="47" y="7" width="3" height="3"/></g>}
    {ornament&&<g fill={c.bright}><rect x="6" y="7" width="3" height="3"/><rect x="54" y="9" width="3" height="3"/><rect x="8" y="51" width="3" height="3"/><rect x="53" y="48" width="3" height="3"/></g>}
   </svg>
  </span>;
