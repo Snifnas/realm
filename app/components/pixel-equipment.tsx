@@ -60,6 +60,6 @@ export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
    {variant===1&&<g fill={c.gem}><rect x="8" y="48" width="3" height="6"/><rect x="53" y="9" width="3" height="6"/><rect x="48" y="55" width="3" height="3"/></g>}
    {variant===2&&<g fill={c.bright}><path d="M7 23 10 18 13 23 10 28Z"/><path d="M51 40 54 35 57 40 54 45Z"/><rect x="47" y="7" width="3" height="3"/></g>}
    {ornament&&<g fill={c.bright}><rect x="6" y="7" width="3" height="3"/><rect x="54" y="9" width="3" height="3"/><rect x="8" y="51" width="3" height="3"/><rect x="53" y="48" width="3" height="3"/></g>}
-  </svg>
+  </svg>}
  </span>;
 }
