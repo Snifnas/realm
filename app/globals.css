@@ -211,3 +211,116 @@
  .equipment-slot .pixel-equipment{width:45px;height:45px}
  .loot-item .pixel-equipment{width:46px;height:46px}
 }
+
+
+/* REALM visual rebuild: a warmer, illustrated overworld and crafted game UI */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap');
+:root{--bg:#171711;--panel:#25251c;--line:#514b37;--text:#eee5d0;--muted:#b1a58a;--gold:#e4bd70;--green:#a4b77b;--wood:#68452e;--parchment:#d7c49a}
+body{background:radial-gradient(ellipse at 75% -15%,#41412b 0,transparent 42%),#171711;color:var(--text)}
+button{transition:filter .16s ease,transform .16s ease,border-color .16s ease}
+button:hover:not(:disabled){filter:brightness(1.13);transform:translateY(-1px)}
+.eyebrow{font-size:9px;letter-spacing:2.1px;color:#d7b36d}
+.brand .realm-word{font-family:'Cinzel',Georgia,serif;letter-spacing:4px}
+.sidebar{width:252px;background:linear-gradient(180deg,#24251c 0%,#191a14 100%);border-right:1px solid #65583d;padding:27px 18px;box-shadow:8px 0 28px #0003}
+.sidebar .brand{padding:2px 9px 24px;border-bottom:1px solid #504832;margin-bottom:20px}
+.sidebar .realm-mark{filter:drop-shadow(0 2px 5px #e2b95b33)}
+.world{background:#2c3525;border:1px solid #52613c;color:#c3d49b;border-radius:3px;margin-bottom:28px;padding:11px 12px}
+.navlabel{color:#9d9073}
+.nav{border-radius:4px;margin:3px 0;padding:13px 12px;color:#c1b69d}
+.nav span{color:#d8b66f}
+.nav.active{background:linear-gradient(90deg,#51432a,#342e20);border-color:#9c7a45;color:#fff0ce;box-shadow:inset 3px 0 #e5bd70,0 3px 10px #0002}
+.nav.active span{color:#ffe09a}
+.player{border-top:1px solid #514832;padding:17px 8px 4px}
+.player>b{border-radius:3px;background:linear-gradient(145deg,#a47c43,#604629);border:1px solid #d7b36d;box-shadow:inset 0 0 0 3px #47351f}
+.player small{color:#d8b66f}
+.main header{background:#202118;border-bottom:1px solid #514832;padding:0 4.5%;color:#b5a88d}
+.main header b{color:#f1ce85}
+.content{max-width:1240px;padding:43px 4.5% 80px}
+.content>h1{font-family:'Cinzel',Georgia,serif;font-size:clamp(30px,3vw,42px);font-weight:600;letter-spacing:-.7px;color:#f0e4ca}
+.content>h1 i{color:#e8c47c}
+.content>.muted{font-size:14px;color:#b9ad94}
+.hero{position:relative;isolation:isolate;min-height:310px;overflow:hidden;display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1.15fr) 190px;align-items:center;gap:22px;padding:32px 34px;margin:29px 0 22px;border:1px solid #a17a43;border-radius:5px;background:#263126 url('/realm-world.svg') center 48%/cover no-repeat;box-shadow:0 16px 36px #0005,inset 0 0 0 4px #211d15}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#151b17f2 0%,#1b2119df 33%,#1b21196b 65%,#171a15a8 100%),linear-gradient(0deg,#11150f99,transparent 48%)}
+.hero>div:first-child{position:relative;z-index:1}
+.hero h2{font-family:'Cinzel',Georgia,serif;font-size:clamp(28px,3vw,39px);line-height:1.16;color:#fff0d0;text-shadow:0 2px 12px #0008}
+.hero p{font-size:13px;color:#e1d4b7;max-width:280px;line-height:1.7}
+.hero .goldbutton{background:linear-gradient(#e8ca83,#bd914e);border:1px solid #f4dc9c;border-radius:3px;color:#241b10;box-shadow:0 3px 0 #79562f,0 8px 16px #0005;font-weight:700}
+.pixel-hero{width:100%;height:230px;flex:none;border:1px solid #d1a75c;border-radius:4px;box-shadow:0 8px 24px #0006;background:#1b251d}
+.pixel-hero img{object-position:center 55%;image-rendering:auto}
+.level{width:100%;padding:17px 13px;background:#1c211bdc;border:1px solid #8d754a;border-radius:4px;backdrop-filter:blur(5px);box-shadow:0 5px 18px #0005}
+.level strong{font-family:'Silkscreen',monospace;font-size:45px;color:#f1cf83;text-shadow:0 3px #624722}
+.level small{font-size:8px;color:#d3c09b}
+.level p{font-size:9px;color:#f0dfbb}
+.bar{height:10px;border:1px solid #927444;border-radius:2px;background:#10140f;overflow:hidden}
+.bar span{background:repeating-linear-gradient(90deg,#d9b56d 0 10px,#e9ce8c 10px 12px)}
+.stats{gap:11px}
+.stats article,.panel{background:linear-gradient(145deg,#2b2b20,#202118);border:1px solid #514b37;border-radius:4px;box-shadow:0 6px 16px #0002,inset 0 1px #ffffff0b}
+.stats article{position:relative;padding:17px 19px;overflow:hidden}
+.stats article:after{content:"";position:absolute;right:-12px;bottom:-26px;width:75px;height:75px;border:1px solid #a48a5530;transform:rotate(45deg)}
+.stats small{font-size:8px;letter-spacing:1.5px;color:#b7a98b}
+.stats strong{font-family:'Silkscreen',monospace;font-size:25px;color:#e7c47c}
+.heading,.panel h2,.inventory-heading h2{font-family:'Cinzel',Georgia,serif;color:#f0e4ca;font-weight:600}
+.heading{font-size:22px}
+.skillrow{border-top:1px solid #4b4533;padding:17px 14px;background:#222319}
+.skillrow b{font-family:'Cinzel',Georgia,serif;font-size:14px;color:#e9dec7}
+.empty{background:linear-gradient(145deg,#29291f,#1e2018);border:1px dashed #766342;border-radius:4px;color:#c0b395;line-height:1.7}
+.primary,.goldbutton,.outline{border-radius:3px;font-weight:600}
+.primary{background:linear-gradient(#dfbd77,#b78b4b);border:1px solid #f0d28f;color:#241b10;box-shadow:0 2px 0 #79562f}
+.outline{border:1px solid #88704a;background:#29291f;color:#e5c681}
+.textbutton{color:#e6c37d}
+.columns{gap:18px}
+.panel{padding:23px}
+.panel h2{font-size:21px}
+input,textarea,select{background:#191a14;border:1px solid #5a523d;border-radius:3px;color:#f0e5d0}
+input:focus,textarea:focus,select:focus{border-color:#dfbd77;box-shadow:0 0 0 2px #dfbd7720}
+label{color:#cfc1a3}
+.notice{background:#35301f;border:1px solid #9b7942;color:#f0d99d;border-radius:3px}
+.quest-summary span{background:#24251c;border:1px solid #62563c;border-radius:3px;color:#c2b395}
+.quest-summary b{color:#eacb86}
+.focus-banner{background:linear-gradient(110deg,#453821,#29281d);border:1px solid #c39a58;border-radius:4px;box-shadow:inset 4px 0 #e8c47c,0 6px 18px #0003}
+.focus-banner strong{font-family:'Cinzel',Georgia,serif;color:#fff0cf}
+.quest-card,.quest-compact{background:linear-gradient(145deg,#2c2c21,#202118);border:1px solid #5c523a;border-radius:4px;box-shadow:0 5px 16px #0002}
+.quest-card.active,.quest-card.focused{background:linear-gradient(120deg,#393323,#24251c);border-color:#b28b50}
+.quest-card h2{font-family:'Cinzel',Georgia,serif;color:#f3e7cd}
+.quest-card>p{font-size:13px;color:#c8bda5;line-height:1.8}
+.quest-reward b{font-family:'Silkscreen',monospace;font-size:14px;color:#f1ce83}
+.resource-link{border-bottom-color:#b08c50;color:#efcf8a}
+.objective{background:#1b1e17;border:1px solid #514a36;border-left:3px solid #d3ad68;border-radius:2px}
+.objective b{font-family:'Cinzel',Georgia,serif;color:#e9ddc5}
+.quest-list-heading{border-bottom-color:#62563d}
+.quest-list-heading h2{font-family:'Cinzel',Georgia,serif;color:#eee0c3}
+.quest-compact{padding:15px 17px}
+.quest-compact>div>b{font-family:'Cinzel',Georgia,serif;color:#f0e3ca;font-size:14px}
+.quest-compact small{color:#d4b779}
+.quest-compact.locked{opacity:.7;background:#1d1e18}
+.skill-tree{border-bottom-color:#514b37}
+.tree-heading b{font-family:'Cinzel',Georgia,serif;color:#f0e4ca}
+.tree-node{background:linear-gradient(145deg,#3a3426,#29281f);border:1px solid #74603e;border-radius:3px;box-shadow:0 4px 10px #0002}
+.tree-node b{font-family:'Cinzel',Georgia,serif;color:#f0e4ca}
+.tree-node p{color:#c0b49a}
+.tree-children .tree-node{background:#24251c;border-color:#554b36}
+.tree-leaf{color:#e2c27d}
+.skill-tree-panel{background:linear-gradient(145deg,#29291f,#1f2119)}
+.loadout-panel,.item-card,.equipment-slot,.loot-item{border-radius:4px}
+.item-card{background:linear-gradient(145deg,#302e23,#22231b);border-color:#66583d}
+.item-card>b,.equipment-slot>b,.loot-item b{font-family:'Cinzel',Georgia,serif;color:#f1e5cd}
+.equipment-slot{background:linear-gradient(145deg,#302d22,#1e2119);border-color:#65583e}
+.equipment-slot.empty-slot{background:#202119;border-color:#5a503b}
+.item-card>p{color:#c2b69e}
+.gear-bonuses span{background:#1c1f17;border-color:#514a35}
+@media(max-width:760px){
+ .sidebar{display:none}
+ .main header{background:#202118ed}
+ .content{padding:25px 15px calc(30px + env(safe-area-inset-bottom))}
+ .hero{display:flex;flex-direction:column;align-items:stretch;gap:14px;padding:20px 17px;min-height:0;background-position:54% center}
+ .hero:before{background:linear-gradient(90deg,#151b17ed,#1b2119b8),linear-gradient(0deg,#11150f99,transparent)}
+ .hero h2{font-size:29px}
+ .pixel-hero{height:160px;flex:0 0 160px}
+ .level{max-width:none}
+ .stats{gap:8px}
+ .stats article{padding:13px}
+ .stats strong{font-size:21px}
+ .columns{gap:12px}
+ .panel{padding:17px}
+ .quest-card,.quest-compact{border-radius:4px}
+}
