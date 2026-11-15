@@ -26,8 +26,7 @@ jobs:
           const base = "https://api.supabase.com/v1";
           if (!token) {
             console.log("RESULT: MISSING_SUPABASE_ACCESS_TOKEN");
-            process.exitCode = 1;
-            return;
+            process.exit(1);
           }
           const headers = {Authorization:"Bearer "+token,Accept:"application/json"};
           async function request(path,method="GET") {
