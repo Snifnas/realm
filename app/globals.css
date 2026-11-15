@@ -48,7 +48,7 @@
   input,textarea,select{font-size:16px;min-height:46px;border-radius:7px}
   textarea{min-height:110px}
   button,.primary,.goldbutton,.outline{min-height:44px;touch-action:manipulation}
-  .mobile-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:#171812f5;border-top:1px solid #49412e;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  .mobile-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(5,1fr);padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:#171812f5;border-top:1px solid #49412e;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
   .mobile-nav-item{min-width:0;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;color:#958d78}
   .mobile-nav-item.active{color:var(--gold)}
   .mobile-nav-icon{position:relative;font-size:21px;line-height:1.1}
