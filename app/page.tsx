@@ -40,7 +40,7 @@ export default function Home(){
   ]);
   const objectiveMap=new Map<string,any>();(o||[]).forEach((x:any)=>{if(!objectiveMap.has(x.quest_id))objectiveMap.set(x.quest_id,x);});
   const progressMap=new Map((rows||[]).map((x:any)=>[x.quest_id,x]));
-  setQuests((q||[]).map((x:any)=>{const p:any=progressMap.get(x.id);return {...x,progressId:p.id,status:p.status,evidence:p.evidence,objective:objectiveMap.get(x.id)||null};}).sort((a:any,b:any)=>({active:0,available:1,submitted:2,completed:3,abandoned:4}[a.status]??5)-({active:0,available:1,submitted:2,completed:3,abandoned:4}[b.status]??5)));
+  setQuests((q||[]).map((x:any)=>{const p:any=progressMap.get(x.id);return {...x,progressId:p.id,status:p.status,evidence:p.evidence,objective:objectiveMap.get(x.id)||null};}).sort((a:any,b:any)=>{const rank:Record<string,number>={active:0,available:1,submitted:2,completed:3,abandoned:4};return (rank[a.status]??5)-(rank[b.status]??5);}));
  }
  async function auth(e:any){
   e.preventDefault();if(!db){setNotice("Database configuration is missing.");return;}setBusy(true);setNotice("");
