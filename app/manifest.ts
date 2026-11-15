@@ -13,7 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#171812",
     categories: ["education", "lifestyle", "productivity"],
     icons: [
-      { src: "/realm-icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }
+      { src: "/realm-icon.svg", sizes: "any", type: "image/svg+xml", purpose: "maskable" }
     ]
   };
 }
