@@ -60,6 +60,13 @@ jobs:
               console.log("PROJECT_LOOKUP_ERROR:",String(project.body.message||"Cannot access project").slice(0,250));
               const list=await request("/projects");
               console.log("PROJECT_LIST_HTTP_STATUS:",list.status);
+              const organizations=await request("/organizations");
+              const orgs=Array.isArray(organizations.body)?organizations.body:(organizations.body.organizations||[]);
+              console.log("ORGANIZATIONS_HTTP_STATUS:",organizations.status);
+              console.log("EXPECTED_ORGANIZATION_VISIBLE:",orgs.some(o=>o.slug==="ccedsoqbdzfkwfreqyfl"||o.id==="ccedsoqbdzfkwfreqyfl"));
+              const other=await request("/projects/sbadnixhrjnkfanqpaux");
+              console.log("OTHER_EXISTING_PROJECT_HTTP_STATUS:",other.status);
+              console.log("OTHER_EXISTING_PROJECT_STATE:",other.status===200?(other.body.status||"UNKNOWN"):"not available");
               if(list.status===200 && Array.isArray(list.body)) {
                 console.log("KNOWN_PROJECT_REFS_AND_STATES:", JSON.stringify(list.body.map(p=>({ref:p.ref,status:p.status}))));
                 console.log("TARGET_REF_IN_LIST:",list.body.some(p=>p.ref===ref));
