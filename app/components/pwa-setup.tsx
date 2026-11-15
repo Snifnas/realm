@@ -15,7 +15,8 @@ export default function PWASetup() {
     const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) && !(window as Window & { MSStream?: unknown }).MSStream;
     setInstalled(isStandalone);
     setIos(isIos);
-    const dismissed = localStorage.getItem("realm-install-dismissed") === "1";
+    let dismissed = false;
+    try { dismissed = localStorage.getItem("realm-install-dismissed") === "1"; } catch { /* iOS private or restricted storage */ }
     if (!isStandalone && !dismissed) setVisible(true);
     const onPrompt = (event: Event) => {
       event.preventDefault();
@@ -40,7 +41,7 @@ export default function PWASetup() {
   }
   function dismiss() {
     setVisible(false);
-    localStorage.setItem("realm-install-dismissed", "1");
+    try { localStorage.setItem("realm-install-dismissed", "1"); } catch { /* non-persistent preference */ }
   }
   if (!visible || installed) return null;
   return <aside className="install-nudge" aria-label="Install REALM">
