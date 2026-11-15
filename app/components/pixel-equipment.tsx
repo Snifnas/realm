@@ -1,7 +1,7 @@
-"use client";
+import { useEffect, useState } from "react";\n"use client";
 
 type PixelEquipmentProps = {
-  item: { name:string; slot:string; rarity:string; design_key?:string; item_key?:string };
+  item: { name:string; slot:string; rarity:string; design_key?:string; item_key?:string; sprite_variant?:number };
   small?: boolean;
 };
 
@@ -15,7 +15,7 @@ const palettes: Record<string,{metal:string;bright:string;dark:string;gem:string
 };
 
 export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
- const rarity=(item.rarity||"common").toLowerCase();
+ const rarity=(item.rarity||"common").toLowerCase();\n const [atlasAvailable,setAtlasAvailable]=useState(false);\n useEffect(()=>{const img=new Image();img.onload=()=>setAtlasAvailable(true);img.onerror=()=>setAtlasAvailable(false);img.src="/equipment-atlas.webp";},[]);
  const c=palettes[rarity]||palettes.common;
  const kind=(item.design_key||item.item_key||"").toLowerCase();
  const variant=[...kind].reduce((n,ch)=>n+ch.charCodeAt(0),0)%3;
@@ -53,7 +53,7 @@ export default function PixelEquipment({item,small=false}:PixelEquipmentProps){
  })();
  const ornament=rarity==="mythic"||rarity==="legendary"||rarity==="epic";
  return <span className={`pixel-equipment ${small?"pixel-equipment-small":""} rarity-${rarity}`} role="img" aria-label={item.name} title={item.name}>
-  <svg viewBox="0 0 64 64" shapeRendering="crispEdges" aria-hidden="true">
+  {atlasAvailable?<span className="equipment-sprite" style={{backgroundPosition:`-${((["common","uncommon","rare","epic","legendary","mythic"].indexOf(rarity)*4+(item.sprite_variant||0))*64)}px -${(["weapon","helmet","chest","legs","boots","gloves","shield","cloak","accessory"].indexOf(item.slot)*64)}px`}} aria-hidden="true"/>:<svg viewBox="0 0 64 64" shapeRendering="crispEdges" aria-hidden="true">
    <path d="M32 3 35 9 42 7 44 14 52 16 49 23 58 29 53 35 57 43 49 47 48 55 39 53 32 61 25 53 16 55 15 47 7 43 11 35 6 29 15 23 12 16 20 14 22 7 29 9Z" fill={c.glow} opacity={rarity==="common"?.08:.16}/>
    {details}
    {variant===0&&<g fill={c.bright}><rect x="7" y="9" width="4" height="4"/><rect x="53" y="49" width="4" height="4"/><rect x="48" y="5" width="2" height="2"/></g>}
