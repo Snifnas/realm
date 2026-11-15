@@ -561,3 +561,8 @@ body .pixel-hero.avatar-holder{background:#416a61}
  .background-card{flex-basis:175px}
  .background-gallery{gap:9px}
 }
+
+/* Collectible world reveal ceremony */
+.reward-scene-image{position:relative;z-index:2;display:block;width:100%;max-width:340px;aspect-ratio:4/3;object-fit:cover;margin:15px auto;border:2px solid #efc67a;box-shadow:0 8px 24px #0008}
+.reward-modal.reward-background{background:radial-gradient(circle at 50% 10%,#444d42,#232b24 55%,#151b17);border-color:#c99f70}
+.reward-background .reward-emblem{border-color:#add5a8;color:#ddf1c8}
