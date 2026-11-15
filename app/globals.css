@@ -181,3 +181,33 @@
  .gear-bonuses span{font-size:8px;padding:7px}
  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Individual 16-bit gear illustrations */
+.pixel-equipment{position:relative;isolation:isolate;display:inline-grid;place-items:center;width:64px;height:64px;flex:none;overflow:hidden;background:radial-gradient(circle at 50% 42%,#ffffff12,transparent 72%),linear-gradient(145deg,#292c21,#171a14);border:1px solid #4b4c3a;box-shadow:inset 0 1px #ffffff0b,0 3px 7px #0005}
+.pixel-equipment svg{display:block;width:100%;height:100%;padding:3px;image-rendering:pixelated;filter:drop-shadow(0 2px 0 #0006)}
+.pixel-equipment-small{width:48px;height:48px}
+.item-card .pixel-equipment{width:58px;height:58px}
+.equipment-slot .pixel-equipment{width:58px;height:58px}
+.loot-item .pixel-equipment{width:54px;height:54px}
+.pixel-equipment.rarity-common{background:linear-gradient(145deg,#34372e,#1b1e18)}
+.pixel-equipment.rarity-uncommon{background:linear-gradient(145deg,#263b2b,#182019)}
+.pixel-equipment.rarity-rare{background:linear-gradient(145deg,#23374a,#171e28)}
+.pixel-equipment.rarity-epic{background:linear-gradient(145deg,#382544,#1e1928)}
+.pixel-equipment.rarity-legendary{background:linear-gradient(145deg,#49371e,#211b12)}
+.pixel-equipment.rarity-mythic{background:linear-gradient(145deg,#48243d,#211723)}
+.item-card{background:linear-gradient(145deg,#20231a,#171a14);box-shadow:inset 0 1px #ffffff06,0 5px 14px #0003}
+.item-card-top{min-height:62px}
+.item-card-top small{align-self:flex-start;margin-top:5px}
+.item-card>p{min-height:48px}
+.equipment-slot{background:linear-gradient(145deg,#20231a,#171a14)}
+.equipment-slot.empty-slot{background:#171a14}
+.loot-item{background:linear-gradient(110deg,#20251c,#171a14)}
+.loot-item>div>span{line-height:1.45}
+.item-card .gear-action{margin-top:auto}
+@media(max-width:760px){
+ .pixel-equipment{width:56px;height:56px}
+ .pixel-equipment-small{width:43px;height:43px}
+ .item-card .pixel-equipment{width:49px;height:49px}
+ .equipment-slot .pixel-equipment{width:45px;height:45px}
+ .loot-item .pixel-equipment{width:46px;height:46px}
+}
