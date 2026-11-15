@@ -494,3 +494,8 @@ label{color:#cfc1a3}
 @media(max-width:375px){
  .hero .pixel-hero.avatar-holder{height:305px;flex-basis:305px}
 }
+
+
+/* Keep the foreground adventurer in the supplied environment art out of view:
+   the live equipped avatar is the only figure shown in the character frame. */
+.pixel-hero.avatar-holder .avatar-village{background-position:right center}
