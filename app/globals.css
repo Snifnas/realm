@@ -324,3 +324,16 @@ label{color:#cfc1a3}
  .panel{padding:17px}
  .quest-card,.quest-compact{border-radius:4px}
 }
+
+/* 216-piece generated pixel sprite atlas, 24 columns x 9 rows of 64px */
+.pixel-equipment .equipment-sprite{display:block;position:absolute;top:50%;left:50%;width:64px;height:64px;flex:none;background-image:url('/equipment-atlas.webp');background-repeat:no-repeat;background-size:1536px 576px;image-rendering:pixelated;transform:translate(-50%,-50%) scale(.88);transform-origin:center}
+.pixel-equipment-small .equipment-sprite{transform:translate(-50%,-50%) scale(.69)}
+.item-card .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.82)}
+.equipment-slot .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.8)}
+.loot-item .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.76)}
+@media(max-width:760px){
+ .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.77)}
+ .pixel-equipment-small .equipment-sprite{transform:translate(-50%,-50%) scale(.62)}
+ .item-card .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.7)}
+ .equipment-slot .pixel-equipment .equipment-sprite{transform:translate(-50%,-50%) scale(.64)}
+}
