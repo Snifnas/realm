@@ -58,9 +58,20 @@ export default function Home(){
  }
  async function loadInventory(){
   if(!db||!session?.user)return;
-  const [{data,error},{data:catalogue}]=await Promise.all([db.from("player_inventory").select("id,source,source_level,is_equipped,obtained_at,item:equipment_items(id,item_key,design_key,name,description,slot,rarity,icon,required_level,attack_bonus,defence_bonus,focus_bonus,vitality_bonus)").eq("user_id",session.user.id).order("obtained_at",{ascending:false});
+  const [{data,error},{data:catalogue}]=await Promise.all([
+    db.from("player_inventory").select("id,source,source_level,is_equipped,obtained_at,item:equipment_items(id,item_key,design_key,name,description,slot,rarity,icon,required_level,attack_bonus,defence_bonus,focus_bonus,vitality_bonus)").eq("user_id",session.user.id).order("obtained_at",{ascending:false}),
+    db.from("equipment_items").select("item_key,slot,rarity").order("item_key")
+  ]);
+  const groups:Record<string,string[]>={};
+  (catalogue||[]).forEach((x:any)=>{const k=x.slot+":"+x.rarity;(groups[k] ||= []).push(x.item_key);});
+  const variants:Record<string,number>={};
+  Object.values(groups).forEach(keys=>keys.forEach((key,i)=>{variants[key]=i%4;}));
+  setSpriteVariants(variants);
   if(error){setNotice(error.message);return;}
-  setInventory((data||[]).map((x:any)=>{const item=Array.isArray(x.item)?x.item[0]:x.item;return {...x,item:item?{...item,sprite_variant:variants[item.item_key]??0}:null};}).filter((x:any)=>x.item) as InventoryItem[]);
+  setInventory((data||[]).map((x:any)=>{
+    const item=Array.isArray(x.item)?x.item[0]:x.item;
+    return {...x,item:item?{...item,sprite_variant:variants[item.item_key]??0}:null};
+  }).filter((x:any)=>x.item) as InventoryItem[]);
  }
  async function auth(e:any){
   e.preventDefault();if(!db){setNotice("Database configuration is missing.");return;}setBusy(true);setNotice("");
