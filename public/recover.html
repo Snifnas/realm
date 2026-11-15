@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171812">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Repair REALM</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:calc(25px + env(safe-area-inset-top)) 22px calc(25px + env(safe-area-inset-bottom));min-height:100dvh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 0,#3a3c2a,#171812 55%);font:15px/1.6 system-ui,-apple-system,sans-serif;color:#eee0c9}
+main{max-width:460px;width:100%;border:1px solid #a18150;padding:26px 23px;border-radius:5px;background:#22251d;box-shadow:0 14px 35px #0006}
+small{color:#d3b373;letter-spacing:2.3px;font-size:11px;font-weight:700}h1{font:500 30px/1.2 Georgia,serif;margin:13px 0 14px;color:#f2e7cc}p{color:#c9bda6;margin:0 0 20px}
+button,a.button{width:100%;margin:7px 0;min-height:52px;display:flex;align-items:center;justify-content:center;border:1px solid #ebce90;border-radius:3px;background:#d9b877;color:#211b11;font:700 14px system-ui;text-decoration:none;cursor:pointer}
+button.secondary{background:#25271f;color:#e7c88e;border-color:#84704b}button:disabled{opacity:.6}#status{margin-top:15px;padding:13px;background:#151b16;border:1px solid #484e3b;color:#c8bd9f;min-height:50px;font-size:13px;overflow-wrap:anywhere}.details{font-size:12px;color:#a99b83;margin-top:14px}
+</style></head>
+<body><main>
+<small>REALM / RECOVERY</small>
+<h1>Repair the app</h1>
+<p>This page works independently of the game. It can clear outdated app files while keeping your character, XP, equipment and quests in Supabase.</p>
+<button id="refresh" type="button">REPAIR &amp; REOPEN REALM</button>
+<button id="reset" class="secondary" type="button">RESET SAVED LOGIN &amp; REOPEN</button>
+<a class="button" style="background:transparent;color:#d9bb83;border-color:#6e593a" href="/">RETURN TO REALM</a>
+<div id="status" role="status" aria-live="polite">Ready to repair. Try the first option before resetting the saved login.</div>
+<p class="details">Reset saved login only if the first option fails. It signs you out on this device, but does not delete server-side progress.</p>
+</main>
+<script>
+(function(){
+  var status = document.getElementById('status');
+  function say(s){status.textContent=s;}
+  function storageReset(){
+    try{
+      var keys=[];
+      for(var i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        if(key && (/^sb-[a-z0-9]+-auth-token$/i.test(key) || /^realm-install-dismissed$/.test(key))) keys.push(key);
+      }
+      keys.forEach(function(k){localStorage.removeItem(k);});
+      return keys.length;
+    }catch(e){say('Could not access local login storage. You can still retry opening the app.');return 0;}
+  }
+  async function repair(resetLogin){
+    document.getElementById('refresh').disabled=true;
+    document.getElementById('reset').disabled=true;
+    say('Clearing outdated web app files...');
+    try{
+      if('serviceWorker' in navigator){
+        var regs = await Promise.race([navigator.serviceWorker.getRegistrations(),new Promise(function(resolve){setTimeout(function(){resolve([]);},3000);})]);
+        await Promise.all(Array.from(regs).map(function(reg){return reg.unregister().catch(function(){return false;});}));
+      }
+    }catch(e){}
+    try{
+      if('caches' in window){
+        var names=await Promise.race([caches.keys(),new Promise(function(resolve){setTimeout(function(){resolve([]);},3000);})]);
+        await Promise.all(Array.from(names).filter(function(n){return n.startsWith('realm-') || /next|workbox/i.test(n);}).map(function(n){return caches.delete(n);}));
+      }
+    }catch(e){}
+    if(resetLogin)storageReset();
+    say('Repair complete. Opening the latest REALM...');
+    window.location.replace('/?repaired='+Date.now());
+  }
+  document.getElementById('refresh').addEventListener('click',function(){void repair(false);});
+  document.getElementById('reset').addEventListener('click',function(){void repair(true);});
+})();
+</script></body></html>
