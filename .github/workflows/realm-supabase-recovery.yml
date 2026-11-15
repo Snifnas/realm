@@ -1,0 +1,72 @@
+name: REALM - Diagnose and restore Supabase
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/realm-supabase-recovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-supabase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      REALM_PROJECT_REF: htpkdrgyhcccgfvegabx
+    steps:
+      - name: Verify project existence and resume only if paused
+        shell: bash
+        run: |
+          node <<'NODE'
+          const ref = process.env.REALM_PROJECT_REF;
+          const token = process.env.SUPABASE_ACCESS_TOKEN;
+          const base = "https://api.supabase.com/v1";
+          if (!token) {
+            console.log("RESULT: MISSING_SUPABASE_ACCESS_TOKEN");
+            process.exitCode = 1;
+            return;
+          }
+          const headers = {Authorization:"Bearer "+token,Accept:"application/json"};
+          async function request(path,method="GET") {
+            try{
+              const res = await fetch(base+path,{method,headers});
+              const raw = await res.text();
+              let obj;
+              try{obj=JSON.parse(raw);}catch{obj={message:raw.slice(0,200)};}
+              return {status:res.status,body:obj};
+            }catch(err){return {status:0,body:{message:String(err)}};}
+          }
+          async function main(){
+            const project = await request("/projects/"+ref);
+            console.log("PROJECT_HTTP_STATUS:",project.status);
+            if (project.status===200) {
+              const state=project.body.status||"UNKNOWN";
+              console.log("PROJECT_REF_MATCH:",project.body.ref===ref || project.body.id===ref);
+              console.log("PROJECT_STATE:",state);
+              if (state==="INACTIVE") {
+                console.log("PROJECT_PAUSED: Initiating non-destructive resume");
+                const restore=await request("/projects/"+ref+"/restore","POST");
+                console.log("RESUME_HTTP_STATUS:",restore.status);
+                console.log("RESUME_ACCEPTED:",restore.status===200||restore.status===202);
+                if(restore.status!==200&&restore.status!==202) console.log("RESUME_ERROR:",String(restore.body.message||"API rejected resume").slice(0,250));
+              } else if(state==="ACTIVE_HEALTHY" || state==="ACTIVE_UNHEALTHY") {
+                console.log("PROJECT_PRESENT: Active. If hostname NXDOMAIN, Supabase support must restore DNS provisioning.");
+              } else {
+                console.log("PROJECT_NOT_PAUSED: No potentially destructive operation attempted.");
+              }
+            } else {
+              console.log("PROJECT_LOOKUP_ERROR:",String(project.body.message||"Cannot access project").slice(0,250));
+              const list=await request("/projects");
+              console.log("PROJECT_LIST_HTTP_STATUS:",list.status);
+              if(list.status===200 && Array.isArray(list.body)) {
+                console.log("KNOWN_PROJECT_REFS_AND_STATES:", JSON.stringify(list.body.map(p=>({ref:p.ref,status:p.status}))));
+                console.log("TARGET_REF_IN_LIST:",list.body.some(p=>p.ref===ref));
+              }
+              process.exitCode=1;
+            }
+          }
+          main().catch(err=>{console.log("UNEXPECTED_ERROR",String(err));process.exitCode=1;});
+          NODE
